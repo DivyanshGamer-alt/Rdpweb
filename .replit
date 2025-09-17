@@ -1,0 +1,25 @@
+modules = ["nodejs-20"]
+
+[workflows]
+runButton = "Start StarRDP App"
+
+[[workflows.workflow]]
+name = "Start StarRDP App"
+author = 47705353
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm install"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
+
+[deployment]
+run = ["sh", "-c", "npm start"]
+build = ["sh", "-c", "npm run build"]
